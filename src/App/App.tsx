@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../Home/Home';
-import AllRecipes from '../AllRecipies/AllRecipes';
+// import AllRecipes from '../AllRecipies/AllRecipes';
 
 function App() {
 
@@ -11,10 +11,10 @@ function App() {
       path='/'
       element={<Home/>}
       />
-      <Route
+      {/* <Route
       path='/allRecipies'
       element={<AllRecipes/>}
-      />
+      /> */}
     </Routes> 
   )
 }

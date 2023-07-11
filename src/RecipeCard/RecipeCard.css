@@ -1,0 +1,13 @@
+.recipe-card-display {
+    height: 33%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mini-image {
+    height: 95%;
+    margin-right: 5%;
+}
