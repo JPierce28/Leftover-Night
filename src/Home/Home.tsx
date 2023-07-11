@@ -27,8 +27,7 @@ const Home = ({recipes}:any) => {
         }
     })
 
-    const imageDisplay = (id:any) => {
-        console.log(id);
+    const imageDisplay = (id:string) => {
         navigate(`/${id}`)  
     }
     
