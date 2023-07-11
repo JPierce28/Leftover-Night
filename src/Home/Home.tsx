@@ -28,8 +28,8 @@ const Home = ({recipes}:any) => {
     })
 
     const imageDisplay = (id:any) => {
-        navigate(`/${id}`)
-        
+        console.log(id);
+        navigate(`/${id}`)  
     }
     
 
@@ -62,7 +62,7 @@ const Home = ({recipes}:any) => {
                           
                     </div>
                     <div className="related-recipes">
-                        {recipes && <Recipes currentRecipes={[lunchDisplay[1], lunchDisplay[2], lunchDisplay[3]]}/>}
+                        {recipes && <Recipes imageDisplay={imageDisplay} currentRecipes={[lunchDisplay[1], lunchDisplay[2], lunchDisplay[3]]}/>}
                         {!recipes && <h1>loading...</h1>}
                     </div>
                 </div>

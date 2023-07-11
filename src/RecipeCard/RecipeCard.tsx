@@ -3,16 +3,17 @@ import { FC } from 'react'
 
 
 interface CurrentRecipe {
-    key: string
-    id: string
-    name: string
-    image: string
-  }
+  imageDisplay: (id:string) => void
+  key: string
+  id: string
+  name: string
+  image: string
+}
 
-const RecipeCard: FC<CurrentRecipe> = ({id, key, image, name}) => {
+const RecipeCard: FC<CurrentRecipe> = ({id, key, image, name, imageDisplay}) => {
   return (
     <div className='recipe-card-display'>
-      <img className='mini-image' id={id} src={image}></img>
+      <img onClick={() => imageDisplay(id)} className='mini-image' id={id} src={image}></img>
       <p>{name}</p>
     </div>
   )

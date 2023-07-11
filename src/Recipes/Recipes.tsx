@@ -3,6 +3,7 @@ import RecipeCard from '../RecipeCard/RecipeCard'
 
 interface Props {
   currentRecipes: any
+  imageDisplay: (id:string) => void
 }
 
 interface CurrentRecipe {
@@ -12,11 +13,12 @@ interface CurrentRecipe {
 }
 
 
-const Recipes = ({currentRecipes}: Props) => {
+const Recipes = ({currentRecipes, imageDisplay}: Props) => {
 
   const displayRecipe = currentRecipes.map((recipe:CurrentRecipe) => {
     return (
       <RecipeCard
+        imageDisplay={imageDisplay}
         key={recipe.id}
         id={recipe.id}
         image={recipe.image}
