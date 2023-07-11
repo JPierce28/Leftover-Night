@@ -7,7 +7,7 @@ import './Home.css'
 //Data types: UsersData, IngredientsData
 
 interface RecipeArray {
-    allRecipes: SingleRecipe[]
+    recipes: SingleRecipe[]
     filter: any
   }
 
@@ -18,32 +18,15 @@ interface RecipeArray {
     tags: string
   }
 
-const Home = () => {
-    
-    const [recipes, setRecipes] = useState<RecipeArray>()
-    const [starters, setStarters] = useState<RecipeArray>()
-    const [singleRecipe, setRecipe] = useState<SingleRecipe>()
-    const [users, setUsers] = useState<any>()
-    const [ingredients, setIngredients] = useState<any>()
+const Home = ({recipes}:any) => {
 
-    useEffect(() => {
-        Promise.all([allRecipes, allUsers, allIngredients])
-        .then(data => {            
-            setRecipes(data[0].recipes)
-            setUsers(data[1])
-            setIngredients(data[2])
-        })
-        if(recipes){
-            let onlyStarters = recipes.filter((food:SingleRecipe) => {
-                if(food.tags !== undefined){
-                    return food.tags.includes('lunch')
-                }
-            })
-            setStarters(onlyStarters)
-            setRecipe(onlyStarters[0])
+
+    let starterDisplay = recipes?.filter((food:SingleRecipe) => {
+        if(food.tags){
+            return food.tags.includes('lunch')
         }
-        
-    }, [recipes])
+    })
+    
 
     return (
         <section className="home-page">
@@ -65,15 +48,17 @@ const Home = () => {
                 <h1>Lunch Time </h1>
                 <div className="recipes-display">
                     <div className="main-recipe">
-                        {starters && 
+                        {recipes !== undefined && 
                         <div>
-                            <img className="recipe-image" src={singleRecipe?.image}></img>
-                            <h3>{singleRecipe?.name}</h3>
+                            <img className="recipe-image" src={recipes[0].image}></img>
+                            <h3>{recipes[0].name}</h3>
                         </div>}
+                        {!recipes && <h1>loading...</h1>}
                           
                     </div>
                     <div className="related-recipes">
-                        {starters && <Recipes currentRecipes={starters}/>}
+                        {recipes && <Recipes currentRecipes={[starterDisplay[1], starterDisplay[2], starterDisplay[3]]}/>}
+                        {!recipes && <h1>loading...</h1>}
                     </div>
                 </div>
             </section>
