@@ -1,4 +1,5 @@
 import './RecipesDisplay.css'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     currentRecipes: CurrentRecipe[]
@@ -12,10 +13,16 @@ interface Props {
 
 const RecipesDisplay = ({currentRecipes}:Props) => {
 
+  const navigate = useNavigate()
+
+  const imageDisplay = (id:string) => {
+    navigate(`/${id}`)  
+}
+
     const displayRecipe = currentRecipes.map((recipe:CurrentRecipe) => {
         return (
           <div className='recipe-container'>
-            <img className='all-recipe-image' src={recipe.image}></img>
+            <img onClick={() => imageDisplay(recipe.id)} className='all-recipe-image' src={recipe.image}></img>
             <p>{recipe.name}</p>
           </div>
         )

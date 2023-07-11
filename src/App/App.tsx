@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from '../Home/Home';
 import AllRecipes from '../AllRecipes/AllRecipes';
 import { allRecipes, allIngredients, allUsers } from "../APIData"
+import RecipeDetails from '../RecipeDetails/RecipeDetails';
 
 interface RecipeArray {
   recipes: SingleRecipe[]
@@ -37,12 +38,16 @@ function App() {
   return (
     <Routes>
       <Route
-      path='/'
-      element={<Home recipes={recipes}/>}
+        path='/'
+        element={<Home recipes={recipes}/>}
       />
       <Route
-      path='/allRecipes'
-      element={<AllRecipes allTheRecipes={recipes}/>}
+        path='/allRecipes'
+        element={<AllRecipes allTheRecipes={recipes}/>}
+      />
+      <Route
+        path='/:id'
+        element={<RecipeDetails recipes={recipes} ingredients={ingredients}/>}
       />
     </Routes> 
   )
