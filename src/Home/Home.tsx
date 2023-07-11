@@ -1,6 +1,4 @@
-import { allRecipes, allIngredients, allUsers } from "../APIData"
-import { useState, useEffect, FC } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Recipes from "../Recipes/Recipes"
 import './Home.css'
 
@@ -20,12 +18,19 @@ interface RecipeArray {
 
 const Home = ({recipes}:any) => {
 
+    const navigate = useNavigate()
+
 
     let lunchDisplay = recipes?.filter((food:SingleRecipe) => {
         if(food.tags){
             return food.tags.includes('lunch')
         }
     })
+
+    const imageDisplay = (id:any) => {
+        navigate(`/${id}`)
+        
+    }
     
 
     return (
@@ -50,7 +55,7 @@ const Home = ({recipes}:any) => {
                     <div className="main-recipe">
                         {recipes !== undefined && 
                         <div>
-                            <img className="recipe-image" src={lunchDisplay[4].image}></img>
+                            <img onClick={() => imageDisplay(lunchDisplay[4].id)} className="recipe-image" src={lunchDisplay[4].image}></img>
                             <h3>{lunchDisplay[4].name}</h3>
                         </div>}
                         {!recipes && <h1>loading...</h1>}
