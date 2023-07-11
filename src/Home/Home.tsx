@@ -1,34 +1,59 @@
-import { allRecipies, allIngredients, allUsers } from "../APIData"
+import { allRecipes, allIngredients, allUsers } from "../APIData"
 import { useState, useEffect } from "react"
+import './Home.css'
 
 const Home = () => {
     
-    const [recipies, setRecipies] = useState([{}])
+    const [recipes, setRecipes] = useState([{}])
+    const [starters, setStarters] = useState<any>()
     const [users, setUsers] = useState([{}])
     const [ingredients, setIngredients] = useState([{}])
 
     useEffect(() => {
-        Promise.all([allRecipies, allUsers, allIngredients])
+        Promise.all([allRecipes, allUsers, allIngredients])
         .then(data => {
-            setRecipies(data[0])
+            setRecipes(data[0].recipes)
             setUsers(data[1])
             setIngredients(data[2])
         })
+        if(recipes.length !== undefined){
+            let onlyStarters = recipes.filter((food:any) => {
+                if(food.tags !== undefined){
+                    return food.tags.includes('starter')
+                }
+            })
+           
+            setStarters(onlyStarters)
+        }
         
-    }, [recipies])
-    
-    
-    console.log(recipies)
-    console.log(users)
-    console.log(ingredients)
-    
-    
-    
+    }, [recipes])
 
+    console.log(starters);
+    
+    
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <section className="home-page">
+            <header className="home-header">
+                <div className="home-logo">
+
+                </div>
+                <div className="home-title">
+                    <h1>Leftover Night!</h1>
+                </div>
+                <div className="home-nav">
+
+                </div>
+            </header>
+            <section className="home-container">
+                <div className="recipes-display">
+                    <div className="main-recipe">
+                    </div>
+                    <div className="related-recipes">
+
+                    </div>
+                </div>
+            </section>
+        </section>
     )
 }
 

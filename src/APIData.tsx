@@ -1,8 +1,8 @@
-const recipieData = 'http://localhost:3001/api/v1/recipes'
+const recipeData = 'http://localhost:3001/api/v1/recipes'
 const userData = 'http://localhost:3001/api/v1/users'
 const ingredientData = 'http://localhost:3001/api/v1/ingredients'
 
-const allRecipies = fetch(recipieData, {
+const allRecipes = fetch(recipeData, {
     method: "GET"   
 })
 .then(response => response.json())
@@ -18,4 +18,4 @@ const allIngredients = fetch(ingredientData, {
 .then(response => response.json())
 
 
-export {allRecipies, allUsers, allIngredients};
+export {allRecipes, allUsers, allIngredients};
