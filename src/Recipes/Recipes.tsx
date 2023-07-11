@@ -14,9 +14,7 @@ interface CurrentRecipe {
 
 const Recipes = ({currentRecipes}: Props) => {
 
-  const filteredRecipes = [currentRecipes[1], currentRecipes[2], currentRecipes[3]]
-
-  const displayRecipe = filteredRecipes.map((recipe:CurrentRecipe) => {
+  const displayRecipe = currentRecipes.map((recipe:CurrentRecipe) => {
     return (
       <RecipeCard
         key={recipe.id}
