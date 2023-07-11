@@ -1,5 +1,6 @@
 import { allRecipes, allIngredients, allUsers } from "../APIData"
 import { useState, useEffect, FC } from "react"
+import { Link } from "react-router-dom"
 import Recipes from "../Recipes/Recipes"
 import './Home.css'
 
@@ -54,7 +55,10 @@ const Home = () => {
                     <h1>Leftover Night!</h1>
                 </div>
                 <div className="home-nav">
-
+                    <Link to='/allRecipes'>
+                        <button>All Recipes</button>
+                    </Link>
+                    
                 </div>
             </header>
             <section className="home-container">
