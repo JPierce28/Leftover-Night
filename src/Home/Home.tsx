@@ -21,7 +21,7 @@ interface RecipeArray {
 const Home = ({recipes}:any) => {
 
 
-    let starterDisplay = recipes?.filter((food:SingleRecipe) => {
+    let lunchDisplay = recipes?.filter((food:SingleRecipe) => {
         if(food.tags){
             return food.tags.includes('lunch')
         }
@@ -50,14 +50,14 @@ const Home = ({recipes}:any) => {
                     <div className="main-recipe">
                         {recipes !== undefined && 
                         <div>
-                            <img className="recipe-image" src={recipes[0].image}></img>
-                            <h3>{recipes[0].name}</h3>
+                            <img className="recipe-image" src={lunchDisplay[4].image}></img>
+                            <h3>{lunchDisplay[4].name}</h3>
                         </div>}
                         {!recipes && <h1>loading...</h1>}
                           
                     </div>
                     <div className="related-recipes">
-                        {recipes && <Recipes currentRecipes={[starterDisplay[1], starterDisplay[2], starterDisplay[3]]}/>}
+                        {recipes && <Recipes currentRecipes={[lunchDisplay[1], lunchDisplay[2], lunchDisplay[3]]}/>}
                         {!recipes && <h1>loading...</h1>}
                     </div>
                 </div>

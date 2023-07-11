@@ -1,23 +1,19 @@
 import './AllRecipes.css'
 import { Link } from 'react-router-dom';
-import Recipes from '../Recipes/Recipes';
+import RecipesDisplay from '../RecipesDisplay/RecipesDisplay';
 
-interface RecipeArray {
-    allTheRecipes: SingleRecipe[]
-    filter: any
+interface Props {
+    allTheRecipes: CurrentRecipe[]
   }
   
-  interface SingleRecipe {
+  interface CurrentRecipe {
     id: string
     name: string
     image: string
-    tags: string
   }
 
 
 const AllRecipes = ({allTheRecipes}:any) => {
-
-    console.log(allTheRecipes);
     
   return (
     <section className='all-recipes-page'>
@@ -28,7 +24,7 @@ const AllRecipes = ({allTheRecipes}:any) => {
             </Link>
         </header>
         <section className='all-recipes-display'>
-            {allTheRecipes && <Recipes currentRecipes={allTheRecipes}/>}
+            {allTheRecipes && <RecipesDisplay currentRecipes={allTheRecipes}/>}
         </section>
     </section>
   )

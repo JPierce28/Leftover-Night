@@ -38,7 +38,14 @@
 }
 
 .recipe-image {
-    height: 70%;
+    height: 90%;
+    box-shadow: 3px 3px 3px 3px black;
+    border-radius: 50%;
+}
+
+.recipe-image:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .related-recipes {

@@ -1,6 +1,7 @@
 .all-recipes-page {
     height: 100vh;
     width: 100%;
+
 }
 
 .all-recipes-header {
@@ -14,9 +15,9 @@
 }
 
 .all-recipes-display {
+    height: 100%;
     display: flex;
     flex-direction: grid;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
 }
